@@ -24,7 +24,7 @@ export type dbType = typeof db;
 /*
 hasMany : 하나의 source 모델을 여러개의 Target 모델과 연결 ex) 여러개의 City(도시)를 가지는 Country(국가)
 belongsToMany : n:m 관계 설정시 사용
-belongsTo : 1:1 ex) 무한도전에 속해있는
+belongsTo : 1:1 ex) 무한도전에 속해있는 유재석
 */
 
 
