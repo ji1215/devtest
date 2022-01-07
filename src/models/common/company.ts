@@ -111,5 +111,24 @@ Company.init(
   }
 );
 
+// insert
+export interface CompanyInsertParams {
+  name: string;
+  code: string;
+  registrationNumber: string | null;
+  corporationNumber: string | null;
+  ceoName: string | null;
+  businessType: string | null;
+  businessItem: string | null;
+  phone: string | null;
+  email: string | null;
+  homepage: string | null;
+  zipCode: string | null;
+  address: string | null;
+  tags: Array<string> | null;
+  userId: number | null;
+  description: string | null;
+}
+
 export default Company;
 
