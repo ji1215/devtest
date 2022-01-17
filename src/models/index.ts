@@ -11,7 +11,7 @@ const db = {
   Company,
   Department,
   User,
-  UserDepartmentJoin
+  UserDepartmentJoin,
 };
 
 export type dbType = typeof db;
@@ -26,7 +26,6 @@ hasMany : 하나의 source 모델을 여러개의 Target 모델과 연결 ex) �
 belongsToMany : n:m 관계 설정시 사용
 belongsTo : 1:1 ex) 무한도전에 속해있는 유재석
 */
-
 
 // Company
 Company.hasMany(Department, { foreignKey: { name: 'companyId' }, onDelete: 'CASCADE', as: 'Departments' });

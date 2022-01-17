@@ -1,7 +1,7 @@
-import {Sequelize} from 'sequelize';
+import { Sequelize } from 'sequelize';
 import dbConfig from '../config/dbConfig';
 
-const { database, username, password, host, port, dialect} = dbConfig;
+const { database, username, password, host, port, dialect } = dbConfig;
 
 const sequelize = new Sequelize(database, username, password, {
   host,

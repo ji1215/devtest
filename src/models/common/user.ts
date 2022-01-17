@@ -5,17 +5,17 @@ import { sequelize } from '../sequelize';
 export interface UserAttributes {
   id: number;
   companyId: number | null;
-  userid: string,
-  password: string,
-  name: string,
-  auth: string,
-  email: string, 
-  mobile: string,
-  active: boolean,
-  loginFailCount: number,
-  lastLogin: Date,
-  lastLogout: Date,
-  updatedPassword: Date,
+  userid: string;
+  password: string;
+  name: string;
+  auth: string;
+  email: string;
+  mobile: string;
+  active: boolean;
+  loginFailCount: number;
+  lastLogin: Date;
+  lastLogout: Date;
+  updatedPassword: Date;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
@@ -44,7 +44,7 @@ export const UserDefaults = {
   auth: 'staff',
   active: false,
   loginFailCount: 0,
-}
+};
 
 User.init(
   {
@@ -60,45 +60,45 @@ User.init(
       type: DataTypes.STRING(50),
       unique: true,
       allowNull: false,
-    }, 
+    },
     password: {
       type: DataTypes.STRING(255),
       allowNull: false,
-    }, 
+    },
     name: {
       type: DataTypes.STRING(50),
       allowNull: false,
-    }, 
+    },
     auth: {
       type: DataTypes.STRING(20),
       allowNull: false,
       defaultValue: UserDefaults.auth,
-    }, 
+    },
     email: {
       type: DataTypes.STRING(255),
-    }, 
+    },
     mobile: {
       type: DataTypes.STRING(20),
-    }, 
+    },
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: UserDefaults.active,
-    }, 
+    },
     loginFailCount: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: UserDefaults.loginFailCount,
-    }, 
+    },
     lastLogin: {
       type: DataTypes.DATE,
-    }, 
+    },
     lastLogout: {
       type: DataTypes.DATE,
-    }, 
+    },
     updatedPassword: {
       type: DataTypes.DATE,
-    }, 
+    },
   },
   {
     sequelize,

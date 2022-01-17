@@ -8,15 +8,15 @@ const dao = {
   insert(params: CompanyInsertParams): Promise<InsertedResult> {
     return new Promise((resolve, reject) => {
       Company.create(params)
-      .then((inserted) => {
-        console.log('inserted : ', inserted)
-        resolve({ insertedId: inserted.id });
-      })
-      .catch((err) => {
-        reject(err);
-      })
-    })
-  }
-}
+        .then((inserted) => {
+          console.log('inserted : ', inserted);
+          resolve({ insertedId: inserted.id });
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+};
 
 export { dao };

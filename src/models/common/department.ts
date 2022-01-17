@@ -33,7 +33,7 @@ class Department extends Model implements DepartmentAttributes {
 export const DepartmentDefaults = {
   parent: 0,
   level: 0,
-}
+};
 
 Department.init(
   {
@@ -78,6 +78,5 @@ Department.init(
     paranoid: true, // deletedAt
   }
 );
-
 
 export default Department;

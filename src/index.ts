@@ -1,18 +1,29 @@
 import express from 'express';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
+import hpp from 'hpp';
+import helmet from 'helmet';
 
 import { sequelize } from './models';
-import { router } from './routes/index'
+import { router } from './routes/index';
 
 dotenv.config();
- 
+
 const app = express();
+
 const port = Number(process.env.NODE_PORT || '3030');
 const env = (process.env.NODE_ENV as 'production' | 'test' | 'development') || 'development';
 
-
 app.set('port', port);
-app.use(express.json())
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// catch 404 and forward to error handler
+app.use((req, res) => {
+  res.send('404 error: File not found');
+});
 
 app.listen(app.get('port'), () => {
   console.log(`server is running on ${port}`);

@@ -36,7 +36,7 @@ UserDepartmentJoin.init(
       references: {
         model: User,
         key: 'id',
-      }
+      },
     },
     departmentId: {
       type: DataTypes.INTEGER,
@@ -45,7 +45,7 @@ UserDepartmentJoin.init(
       references: {
         model: Department,
         key: 'id',
-      }
+      },
     },
   },
   {

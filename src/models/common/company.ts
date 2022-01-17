@@ -1,5 +1,5 @@
-import { Model, DataTypes, WhereOptions, Order } from 'sequelize'
-import { sequelize } from '../sequelize'
+import { Model, DataTypes, WhereOptions, Order } from 'sequelize';
+import { sequelize } from '../sequelize';
 
 export interface CompanyAttributes {
   id: number;
@@ -42,7 +42,7 @@ class Company extends Model implements CompanyAttributes {
   public description!: CompanyAttributes['description'];
   public readonly createdAt!: CompanyAttributes['createdAt'];
   public readonly updatedAt!: CompanyAttributes['updatedAt'];
-  public readonly deletedAt!: CompanyAttributes['deletedAt'];  
+  public readonly deletedAt!: CompanyAttributes['deletedAt'];
 }
 
 Company.init(
@@ -68,7 +68,7 @@ Company.init(
       type: DataTypes.STRING(30),
     },
     ceoName: {
-      type: DataTypes.STRING(20)
+      type: DataTypes.STRING(20),
     },
     businessType: {
       type: DataTypes.STRING(500),
@@ -131,4 +131,3 @@ export interface CompanyInsertParams {
 }
 
 export default Company;
-
