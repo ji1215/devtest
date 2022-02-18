@@ -20,6 +20,8 @@ app.set('port', port);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(router);
+
 // catch 404 and forward to error handler
 app.use((req, res) => {
   res.send('404 error: File not found');
@@ -41,4 +43,3 @@ sequelize
     console.error(err);
   });
 
-app.use(router);

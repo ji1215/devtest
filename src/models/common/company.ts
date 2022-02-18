@@ -130,4 +130,34 @@ export interface CompanyInsertParams {
   // description: string | null;
 }
 
+// selectList
+export interface CompanySelectListParams {
+  name?: string;
+  code?: string;
+}
+
+export interface CompanySelectListQuery {
+  where?: WhereOptions<CompanyAttributes>;
+  limit?: number;
+  offset?: number;
+  order?: Order;
+}
+
+// selectInfo
+export interface CompanySelectInfoParams {
+  id?: number;
+}
+
+// update
+export interface CompanyUpdateParams {
+  id?: number;
+  name?: string;
+  code?: string;
+}
+
+// delete
+export interface CompanyDeleteParams {
+  id?: number;
+}
+
 export default Company;

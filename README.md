@@ -1040,3 +1040,11 @@ Executing (default): CREATE TABLE IF NOT EXISTS "companies" ("id"  SERIAL , "nam
 ```
 
 (`sequelize.sync`옵션을 빼면 테이블 자동 생성이 생략 된다.)
+
+
+
+# 업데이트 히스토리
+
+## v1.0.5
+
+- company model creste, update, select 작업 
