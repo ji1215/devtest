@@ -1048,3 +1048,10 @@ Executing (default): CREATE TABLE IF NOT EXISTS "companies" ("id"  SERIAL , "nam
 ## v1.0.5
 
 - company model creste, update, select 작업 
+
+## v1.0.6
+
+- company model creste, update, select, delete 
+  - company model 설정 모든 항목 넣기
+  - 라우터 파일의 응답 로직을 규격화 
+- department crud 작업  

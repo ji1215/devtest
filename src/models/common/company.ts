@@ -115,25 +115,32 @@ Company.init(
 export interface CompanyInsertParams {
   name: string;
   code: string;
-  // registrationNumber: string | null;
-  // corporationNumber: string | null;
-  // ceoName: string | null;
-  // businessType: string | null;
-  // businessItem: string | null;
-  // phone: string | null;
-  // email: string | null;
-  // homepage: string | null;
-  // zipCode: string | null;
-  // address: string | null;
-  // tags: Array<string> | null;
-  // userId: number | null;
-  // description: string | null;
+  registrationNumber: string | null;
+  corporationNumber: string | null;
+  ceoName: string | null;
+  businessType: string | null;
+  businessItem: string | null;
+  phone: string | null;
+  email: string | null;
+  homepage: string | null;
+  zipCode: string | null;
+  address: string | null;
+  tags: Array<string> | null;
+  userId: number | null;
+  description: string | null;
 }
 
 // selectList
 export interface CompanySelectListParams {
   name?: string;
   code?: string;
+  registrationNumber?: string | null;
+  corporationNumber?: string | null;
+  tags?: Array<string> | null;
+  userId?: number | null;
+  limit?: number;
+  offset?: number;
+  order?: string;
 }
 
 export interface CompanySelectListQuery {
@@ -153,6 +160,19 @@ export interface CompanyUpdateParams {
   id?: number;
   name?: string;
   code?: string;
+  registrationNumber?: string | null;
+  corporationNumber?: string | null;
+  ceoName?: string | null;
+  businessType?: string | null;
+  businessItem?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  homepage?: string | null;
+  zipCode?: string | null;
+  address?: string | null;
+  tags?: Array<string> | null;
+  userId?: number | null;
+  description?: string | null;
 }
 
 // delete
@@ -160,4 +180,4 @@ export interface CompanyDeleteParams {
   id?: number;
 }
 
-export default Company;
+export default Company; 

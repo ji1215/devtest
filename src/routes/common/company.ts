@@ -25,13 +25,32 @@ router.post('/', async (req: Request<unknown, unknown, CompanyInsertParams, unkn
     const params: CompanyInsertParams = {
       name: req.body.name,
       code: req.body.code,
+      registrationNumber: req.body.registrationNumber,
+      corporationNumber: req.body.corporationNumber,
+      ceoName: req.body.ceoName,
+      businessType: req.body.businessType,
+      businessItem: req.body.businessItem,
+      phone: req.body.phone,
+      email: req.body.email,
+      homepage: req.body.homepage,
+      zipCode: req.body.zipCode,
+      address: req.body.address,
+      tags: req.body.tags,
+      userId: req.body.userId,
+      description: req.body.description,
     };
 
     // 비즈니스 로직 호출
     const result = await companyService.reg(params);
-    return res.send('success');
+
+    // 최종 응답 값 세팅
+    const resJson = resSuccess(result, resType.REG);
+    return res.status(resJson.status).json(resJson);
+
   } catch (err) {
-    return res.send('err');
+    // 에러 응답 값 세팅
+    const resJson = resError(err);
+    return res.status(resJson.status).json(resJson);
   }
 });
 
@@ -42,6 +61,13 @@ router.get('/', async (req: Request<unknown, unknown, unknown, CompanySelectList
     const params: CompanySelectListParams = {
       name: req.query.name,
       code: req.query.code,
+      registrationNumber: req.query.registrationNumber,
+      corporationNumber: req.query.corporationNumber,
+      tags: req.query.tags ? ((req.query.tags as unknown) as string).split(',') : null,
+      userId: Number(req.query.userId),
+      limit: Number(req.query.limit || 'NaN'),
+      offset: Number(req.query.offset || 'NaN'),
+      order: req.query.order,
     };
 
     // 비즈니스 로직 호출
@@ -98,6 +124,19 @@ router.put('/id/:id', async (req: Request<CompanyUpdateParams, unknown, CompanyU
       id: Number(req.params.id),
       name: req.body.name,
       code: req.body.code,
+      registrationNumber: req.body.registrationNumber,
+      corporationNumber: req.body.corporationNumber,
+      ceoName: req.body.ceoName,
+      businessType: req.body.businessType,
+      businessItem: req.body.businessItem,
+      phone: req.body.phone,
+      email: req.body.email,
+      homepage: req.body.homepage,
+      zipCode: req.body.zipCode,
+      address: req.body.address,
+      tags: req.body.tags,
+      userId: req.body.userId,
+      description: req.body.description
     };
 
     // 비즈니스 로직 호출
@@ -114,6 +153,40 @@ router.put('/id/:id', async (req: Request<CompanyUpdateParams, unknown, CompanyU
     return res.status(resJson.status).json(resJson);
   }
 });
+
 // company 삭제
+router.delete(
+  '/id/:id',
+  async (req: Request<CompanyDeleteParams, unknown, unknown, unknown>, res: Response) => {
+    try {
+      // 요청 파라미터
+      const params: CompanyDeleteParams = {
+        id: Number(req.params.id),
+      };
+
+      // 입력 값 체크
+      if (!params.id || isNaN(params.id)) {
+        const err = new ErrorClass(resCode.BAD_REQUEST_INVALID, 'Invalid value (id: number)');
+
+        const resJson = resError(err);
+
+        return res.status(resJson.status).json(resJson);
+      }
+
+      // 비즈니스 로직 호출
+      const result = await companyService.delete(params);
+
+      // 최종 응답 값 세팅
+      const resJson = resSuccess(result, resType.DELETE);
+
+      return res.status(resJson.status).json(resJson);
+    } catch (err) {
+      // 에러 응답 값 세팅
+      const resJson = resError(err);
+
+      return res.status(resJson.status).json(resJson);
+    }
+  }
+);
 
 export { router };

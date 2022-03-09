@@ -84,8 +84,22 @@ const service = {
       resolve(result);
     });
   },
-  // delete
-};
+  // delete 
+  async delete(params: CompanyDeleteParams): Promise<DeletedResult> {
+    let result: DeletedResult;
 
+    try {
+      result = await companyDao.deleteForce(params);
+    } catch (err) {
+      return new Promise((resolve, reject) => {
+        reject(err);
+      });
+    }
+
+    return new Promise((resolve) => {
+      resolve(result);
+    });
+  },
+};
 
 export { service };

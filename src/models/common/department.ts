@@ -79,4 +79,54 @@ Department.init(
   }
 );
 
+// insert
+export interface DepartmentInsertParams {
+  companyId: number;
+  name: string;
+  parent: number;
+  orderby: number | null;
+  description: string | null;
+}
+
+// selectList
+export interface DepartmentSelectListParams {
+  id?: number;
+  companyIds?: Array<number> | null;
+  name?: string;
+  parent?: number;
+  level?: number;
+  fullPath?: string | null;
+  orderby?: number | null;
+  description?: string | null;
+  limit?: number;
+  offset?: number;
+  order?: string;
+}
+
+export interface DepartmentSelectListQuery {
+  where?: WhereOptions<DepartmentAttributes>;
+  limit?: number;
+  offset?: number;
+  order?: Order;
+}
+
+// update
+export interface DepartmentUpdateParams {
+  id?: number;
+  companyId?: number;
+  name?: string;
+  parent?: number;
+  level?: number;
+  fullPath?: string | null;
+  orderby?: number | null;
+  description?: string | null;
+  orderbyList?: Array<{ id: number; orderby: number }>;
+}
+
+// delete
+export interface DepartmentDeleteParams {
+  id?: number;
+}
+
+
 export default Department;

@@ -4,6 +4,7 @@ import path from 'path';
 
 //common
 import { router as companyRouter } from './common/company';
+import { router as departmentRouter } from './common/department';
 
 const router = express.Router();
 
@@ -30,5 +31,6 @@ router.get('/', (req, res) => {
 
 //common
 router.use('/companies', companyRouter);
+router.use('/departments', departmentRouter);
 
 export { router };

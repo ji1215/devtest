@@ -5,19 +5,19 @@ import {
   UpdatedResult,
   DeletedResult,
 } from '../../lib/resUtil';
-import Company, {
-  CompanyAttributes, CompanyInsertParams,
-  CompanySelectListParams,
-  CompanySelectListQuery,
-  CompanySelectInfoParams,
-  CompanyUpdateParams,
-  CompanyDeleteParams,
-} from '../../models/common/company';
+import Department, {
+  DepartmentAttributes, DepartmentInsertParams,
+  DepartmentSelectListParams,
+  DepartmentSelectListQuery,
+  // DepartmentSelectInfoParams,
+  DepartmentUpdateParams,
+  DepartmentDeleteParams,
+} from '../../models/common/department';
 
 const dao = {
-  insert(params: CompanyInsertParams): Promise<InsertedResult> {
+  insert(params: DepartmentInsertParams): Promise<InsertedResult> {
     return new Promise((resolve, reject) => {
-      Company.create(params)
+      Department.create(params)
         .then((inserted) => {
           console.log('inserted : ', inserted);
           resolve({ insertedId: inserted.id });
@@ -27,9 +27,9 @@ const dao = {
         });
     });
   },
-  selectList(params: CompanySelectListParams): Promise<SelectedListResult<CompanyAttributes>> {
+  selectList(params: DepartmentSelectListParams): Promise<SelectedListResult<DepartmentAttributes>> {
     // DB에 넘길 최종 쿼리 세팅
-    const setQuery: CompanySelectListQuery = {};
+    const setQuery: DepartmentSelectListQuery = {};
     // 1. where조건 세팅
     if (params.name) {
       setQuery.where = {
@@ -37,15 +37,9 @@ const dao = {
         name: { [Op.like]: `%${params.name}%` },
       };
     }
-    if (params.code) {
-      setQuery.where = {
-        ...setQuery.where,
-        code: params.code,
-      };
-    }
 
     return new Promise((resolve, reject) => {
-      Company.findAndCountAll({
+      Department.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['description'] }, // 해당 필드 제외
         distinct: true,
@@ -58,22 +52,9 @@ const dao = {
         });
     });
   },
-  selectInfo(params: CompanySelectInfoParams): Promise<CompanyAttributes | null> {
+  update(params: DepartmentUpdateParams): Promise<UpdatedResult> {
     return new Promise((resolve, reject) => {
-      Company.findByPk(params.id, {
-        include: [],
-      })
-        .then((selectedInfo) => {
-          resolve(selectedInfo);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
-  },
-  update(params: CompanyUpdateParams): Promise<UpdatedResult> {
-    return new Promise((resolve, reject) => {
-      Company.update(params, { where: { id: params.id } })
+      Department.update(params, { where: { id: params.id } })
         .then(([updated]) => {
           resolve({ updatedCount: updated });
         })
@@ -82,9 +63,9 @@ const dao = {
         });
     });
   },
-  deleteForce(params: CompanyDeleteParams): Promise<DeletedResult> {
+  deleteForce(params: DepartmentDeleteParams): Promise<DeletedResult> {
     return new Promise((resolve, reject) => {
-      Company.destroy({
+      Department.destroy({
         // 다음의 조건으로만 삭제 가능
         where: {
           id: params.id,
@@ -100,5 +81,6 @@ const dao = {
     });
   },
 };
+
 
 export { dao };
